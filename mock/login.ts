@@ -1,15 +1,13 @@
-import {MockMethod} from "vite-plugin-mock";
-
 export default [
   {
     url: "/login",
     method: "post",
-    statusCode: 500,
+    statusCode: 200,
     response: () =>{
       return {
         code: 200,
         message: "success",
-        success: false,
+        success: true,
         data: {
           name: "管理员",
           username: "admin",
@@ -18,4 +16,4 @@ export default [
       }
     }
   }
-] as MockMethod[];
+]

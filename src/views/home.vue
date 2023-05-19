@@ -1,16 +1,21 @@
 <template>
 <div>home</div>
-  <el-button type="primary">111</el-button>
+  <el-button type="primary">{{ userStore.name }}</el-button>
 </template>
 
 <script setup lang="ts">
-import modal from "../common/modal.ts";
 import {Post} from "@/common/request.ts";
+import {useUserStore} from "@/store/user.ts";
 
-modal.warning("111")
+const userStore = useUserStore();
 
-Post("/login").then(resp => {
-  console.log(resp)
+Post("/login", {aaa: 'aaa'}, {type: 'formdata'}).then(resp => {
+  if(resp.success) {
+    userStore.updateUser({
+      ...resp.data,
+      isLogin: true,
+    })
+  }
 })
 </script>
 

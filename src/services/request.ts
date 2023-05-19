@@ -1,14 +1,33 @@
-import axios from "axios";
+import axios, {InternalAxiosRequestConfig} from "axios";
 import modal from "@/common/modal.ts";
+import {AnyObject} from "@/interface/util.ts";
+import {store} from "@/store";
 
 const instance = axios.create({
   timeout: 60000,
   withCredentials: true,
 });
 
+const userStore = store.user;
+
+interface REQUEST_CONFIG extends InternalAxiosRequestConfig {
+  options: AnyObject
+}
 instance.interceptors.request.use(
-  function (config) {
-    // 在发送请求之前做些什么
+    // @ts-ignore
+  (config: REQUEST_CONFIG) => {
+    console.log(config)
+    if(userStore.isLogin){ // 获取token
+      config.headers.Authorization = `Bearer ${userStore.token}`;
+    }
+
+    const opt = config.options;
+    if (opt.type === 'formdata'){
+      config.headers["Content-Type"] = "multipart/form-data";
+    } else if(opt.type === "Json"){
+      config.headers["Content-Type"] = "application/json";
+    }
+    console.log("no options", config);
     return config;
   },
   function (error) {
@@ -34,8 +53,8 @@ instance.interceptors.response.use(
 );
 
 export const request = async (data: any, options?: any) => {
-  const promise: Promise<any> = new Promise((resolve, reject) => {
-    instance(data).then((res) => {
+  const promise: Promise<any> = new Promise((resolve) => {
+    instance({...data, options: options}).then((res) => {
       resolve(res);
     });
   });

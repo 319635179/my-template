@@ -1,4 +1,5 @@
 import "element-plus/es/components/message/style/css";
+// @ts-ignore
 import { ElMessage } from "element-plus";
 
 const modal = {
