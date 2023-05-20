@@ -1,7 +1,7 @@
-import axios, {InternalAxiosRequestConfig} from "axios";
+import axios, { AxiosRequestHeaders, InternalAxiosRequestConfig } from "axios";
 import modal from "@/common/modal.ts";
-import {AnyObject} from "@/interface/util.ts";
 import {store} from "@/store";
+import { Request_Opt } from "@/interface/request.ts";
 
 const instance = axios.create({
   timeout: 60000,
@@ -11,23 +11,27 @@ const instance = axios.create({
 const userStore = store.user;
 
 interface REQUEST_CONFIG extends InternalAxiosRequestConfig {
-  options: AnyObject
+  options: Request_Opt;
+}
+
+// @ts-ignore
+const setRequestHeaders = (header: AxiosRequestHeaders, opt: Request_Opt) => {
+  const headers: AxiosRequestHeaders = header;
+  if(userStore.isLogin){ // 获取token
+    headers.Authorization = `Bearer ${userStore.token}`;
+  }
+  if (opt?.type === 'formdata'){
+    headers["Content-Type"] = "multipart/form-data";
+  } else if(opt?.type === "Json"){
+    headers["Content-Type"] = "application/json";
+  }
+
+  return headers;
 }
 instance.interceptors.request.use(
     // @ts-ignore
   (config: REQUEST_CONFIG) => {
-    console.log(config)
-    if(userStore.isLogin){ // 获取token
-      config.headers.Authorization = `Bearer ${userStore.token}`;
-    }
-
-    const opt = config.options;
-    if (opt.type === 'formdata'){
-      config.headers["Content-Type"] = "multipart/form-data";
-    } else if(opt.type === "Json"){
-      config.headers["Content-Type"] = "application/json";
-    }
-    console.log("no options", config);
+    config.headers = setRequestHeaders(config.headers, config.options);
     return config;
   },
   function (error) {
@@ -37,7 +41,6 @@ instance.interceptors.request.use(
 );
 instance.interceptors.response.use(
   (resp: any) => {
-    console.log("service --- ", resp)
     resp = resp.data;
     if (!resp.success) {
       modal.warning(resp.message);
@@ -52,7 +55,7 @@ instance.interceptors.response.use(
   }
 );
 
-export const request = async (data: any, options?: any) => {
+export const request = async (data: any, options?: Request_Opt) => {
   const promise: Promise<any> = new Promise((resolve) => {
     instance({...data, options: options}).then((res) => {
       resolve(res);
