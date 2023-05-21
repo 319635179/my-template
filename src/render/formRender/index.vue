@@ -5,14 +5,14 @@
   <el-form
     :model="form"
     :label-width="formLabelWidth"
-    :class="formAttribute.className"
+    :class="formAttribute.className + ' form-column-' + formAttribute.column"
     :style="formAttribute.style"
   >
     <el-form-item
       v-for="(item, prop, index) in formItems"
       :label="item.label"
       :style="item.style"
-      :class="item.className"
+      :class="item.className + ' item-column-' + item.column"
       :label-width="item.style?.labelWidth || formLabelWidth"
       :required="item.required"
     >
@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { FORM_ITEM, FORM_PROPERTIES, FORM_RENDER } from "@/interface/field.ts";
+import { FORM_PROPERTIES, FORM_RENDER } from "@/interface/field.ts";
 import { computed, onMounted, Ref, ref } from "vue";
 import { AnyObject } from "@/interface/util.ts";
 import Widget from "@/render/formRender/widget.vue";
@@ -44,6 +44,7 @@ const form = computed({
     return props.modelValue;
   },
   set(val) {
+    console.log(val);
     const data = Object.assign(props.modelValue, val);
     emits("update:modelValue", data);
     emits("change", data);
@@ -64,4 +65,5 @@ onMounted(() => {
 });
 </script>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+</style>

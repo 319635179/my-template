@@ -45,12 +45,18 @@ interface FORM_STYLE {
 export interface FORM_PROPERTIES {
   [key: string]: FORM_ITEM;
 }
+export interface NUM_LIMIT {
+  min?: number;
+  max?: number;
+}
 export interface FORM_ATTRIBUTE {
   widget?: WIDGET_TYPE; // 控件类型，默认text
-  options?: META_VALUE;
+  options?: META_VALUE[];
   style?: FORM_STYLE;
   className?: string;
   column?: number; // 占用列数
+  limit?: NUM_LIMIT;
+  placeholder?: string;
   defaultValue?: any;
   disabled?: boolean;
   required?: boolean;
