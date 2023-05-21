@@ -23,6 +23,12 @@ export interface META_ITEM {
   type?: META_TYPE;
 }
 
+export interface NO_MUST_META_ITEM {
+  label?: string;
+  prop?: string;
+  type?: META_TYPE;
+}
+
 export interface META_VALUE {
   label: string;
   key: any;
@@ -36,23 +42,35 @@ interface FORM_STYLE {
   [key: string]: any;
 }
 
-export interface FORM_ITEM extends META_ITEM {
+export interface FORM_PROPERTIES {
+  [key: string]: FORM_ITEM;
+}
+export interface FORM_ATTRIBUTE {
   widget?: WIDGET_TYPE; // 控件类型，默认text
   options?: META_VALUE;
   style?: FORM_STYLE;
+  className?: string;
+  column?: number; // 占用列数
+  defaultValue?: any;
   disabled?: boolean;
   required?: boolean;
   hidden?: string; // 联动语句
   component?: Component; // widget为component时，传入组件
   attribute?: { [key: string]: META_VALUE }; // 传入组件数据
-  properties: FORM_ITEM; // 子表单
+  properties?: FORM_PROPERTIES; // 子表单
   verifyType?: VERIFY_TYPE;
   verify?: (rule: any, value: any, callback: any) => any;
+}
+export interface FORM_ITEM extends META_ITEM, FORM_ATTRIBUTE{
+}
+
+export interface FORM_EXTRA extends NO_MUST_META_ITEM, FORM_ATTRIBUTE{
 }
 
 export interface FORM_RENDER {
   column?: number;
   labelWidth?: string | number;
+  className?: string;
   style?: FORM_STYLE;
-  properties: FORM_ITEM;
+  properties:FORM_PROPERTIES ;
 }
