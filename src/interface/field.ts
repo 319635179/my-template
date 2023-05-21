@@ -67,16 +67,14 @@ export interface FORM_ATTRIBUTE {
   verifyType?: VERIFY_TYPE;
   verify?: (rule: any, value: any, callback: any) => any;
 }
-export interface FORM_ITEM extends META_ITEM, FORM_ATTRIBUTE{
-}
+export interface FORM_ITEM extends META_ITEM, FORM_ATTRIBUTE {}
 
-export interface FORM_EXTRA extends NO_MUST_META_ITEM, FORM_ATTRIBUTE{
-}
+export interface FORM_EXTRA extends NO_MUST_META_ITEM, FORM_ATTRIBUTE {}
 
 export interface FORM_RENDER {
   column?: number;
   labelWidth?: string | number;
   className?: string;
   style?: FORM_STYLE;
-  properties:FORM_PROPERTIES ;
+  properties: FORM_PROPERTIES;
 }

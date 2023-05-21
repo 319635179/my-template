@@ -44,7 +44,6 @@ const form = computed({
     return props.modelValue;
   },
   set(val) {
-    console.log(val);
     const data = Object.assign(props.modelValue, val);
     emits("update:modelValue", data);
     emits("change", data);
@@ -59,11 +58,9 @@ const getDefaultValue = () => {
     }
   });
 };
+getDefaultValue();
 
-onMounted(() => {
-  getDefaultValue();
-});
+onMounted(() => {});
 </script>
 
-<style scoped lang="less">
-</style>
+<style scoped lang="less"></style>

@@ -7,13 +7,22 @@
     v-if="item.widget === 'text' || !item.widget"
     v-model="data"
     :disabled="item.disabled"
+    :placeholder="item.placeholder"
   ></el-input>
-  <el-radio-group v-if="item.widget === 'radio'" v-model="data">
+  <el-radio-group
+    v-else-if="item.widget === 'radio'"
+    v-model="data"
+    :placeholder="item.placeholder"
+  >
     <el-radio v-for="opt in item.options" :label="opt.value || opt.key">{{
       opt.label
     }}</el-radio>
   </el-radio-group>
-  <el-select v-if="item.widget === 'select'" v-model="data">
+  <el-select
+    v-else-if="item.widget === 'select'"
+    v-model="data"
+    :placeholder="item.placeholder"
+  >
     <el-option
       v-for="opt in item.options"
       :label="opt.label"
@@ -22,22 +31,31 @@
   </el-select>
   <!--  Number类型  -->
   <el-input-number
-    v-if="item.widget === 'number'"
+    :placeholder="item.placeholder"
+    v-else-if="item.widget === 'number'"
     v-model="data"
     :disabled="item.disabled"
   ></el-input-number>
   <el-slider
-    v-if="item.widget === 'slider'"
+    v-else-if="item.widget === 'slider'"
     v-model="data"
     :min="item.limit?.min"
     :max="item.limit?.max"
   ></el-slider>
   <!--  Boolean类型  -->
-  <el-switch v-if="item.widget === 'switch'" v-model="data"></el-switch>
+  <el-switch v-else-if="item.widget === 'switch'" v-model="data"></el-switch>
   <!--  Object类型  -->
   <!--  Date类型-->
-  <el-time-picker v-if="item.widget === 'time'" v-model="data"></el-time-picker>
-  <el-date-picker v-if="item.widget === 'date'" v-model="data"></el-date-picker>
+  <el-time-picker
+    :placeholder="item.placeholder"
+    v-else-if="item.widget === 'time'"
+    v-model="data"
+  ></el-time-picker>
+  <el-date-picker
+    :placeholder="item.placeholder"
+    v-else-if="item.widget === 'date'"
+    v-model="data"
+  ></el-date-picker>
 </template>
 
 <script setup lang="ts">
@@ -48,7 +66,6 @@ const props = defineProps<{
   item: FORM_ITEM;
   modelValue: any;
 }>();
-console.log(props.item.widget === "text" || !props.item.widget);
 const emits = defineEmits(["update:modelValue", "change"]);
 const data = computed({
   get() {

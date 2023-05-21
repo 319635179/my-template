@@ -6,21 +6,21 @@ const modal = {
   warning: (mes: string) => {
     ElMessage({
       message: mes,
-      type: 'warning'
-    })
+      type: "warning",
+    });
   },
   success: (mes: string) => {
     ElMessage({
       message: mes,
-      type: 'success'
-    })
+      type: "success",
+    });
   },
   error: (mes: string) => {
     ElMessage({
       message: mes,
-      type: 'error'
-    })
+      type: "error",
+    });
   },
-}
+};
 
 export default modal;
