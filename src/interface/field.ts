@@ -1,5 +1,3 @@
-import { Component } from "vue";
-
 export type META_TYPE = "string" | "number" | "array" | "boolean" | "object";
 export type VERIFY_TYPE = "ip" | "password" | "date" | "time";
 export type WIDGET_TYPE =
@@ -61,9 +59,9 @@ export interface FORM_ATTRIBUTE {
   disabled?: boolean;
   required?: boolean;
   hidden?: string; // 联动语句
-  component?: Component; // widget为component时，传入组件
+  component?: any; // widget为component时，传入组件
   attribute?: { [key: string]: META_VALUE }; // 传入组件数据
-  properties?: FORM_PROPERTIES; // 子表单
+  childFrom?: FORM_RENDER; // 子表单
   verifyType?: VERIFY_TYPE;
   verify?: (rule: any, value: any, callback: any) => any;
 }

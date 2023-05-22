@@ -11,7 +11,9 @@ import { Post } from "@/common/request.ts";
 import { useUserStore } from "@/store/user.ts";
 import { FORM_RENDER, META_ITEM } from "@/interface/field.ts";
 import { getFormItem } from "@/common/field.ts";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, shallowRef } from "vue";
+import { getHidden } from "@/util";
+import Test from "@/views/test.vue";
 
 const userStore = useUserStore();
 const test: META_ITEM = {
@@ -61,8 +63,17 @@ const test_form: FORM_RENDER = {
           { label: "b", key: 2 },
         ],
         defaultValue: 2,
+        hidden: 'form.ddd % 2'
       }
     ),
+    ...getFormItem(
+      {label: 'fff', prop: 'fff'}, {
+        widget: 'component',
+        column: 2,
+        component: shallowRef(Test),
+        defaultValue: {test: ""}
+      }
+    )
   },
 };
 
@@ -80,7 +91,13 @@ Post("/login").then((resp) => {
   }
 });
 
-onMounted(() => {});
+onMounted(() => {
+  console.log(getHidden([
+    {prop: 'a', val: 1},
+    {prop: 'b', val: 2},
+    {prop: 'c', val: 3},
+  ], false));
+});
 </script>
 
 <style scoped lang="less"></style>

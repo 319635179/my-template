@@ -11,19 +11,37 @@
     <el-form-item
       v-for="(item, prop, index) in formItems"
       :label="item.label"
-      :style="item.style"
       :class="(item.className || '') + ' item-column-' + (item.column || 1)"
       :label-width="item.style?.labelWidth || formLabelWidth"
       :required="item.required"
+      :style="{
+        display: getHidden(item.hidden) ? 'none' : '',
+        ...item.style,
+      }"
     >
-      <widget :item="item" v-model="form[prop]"></widget>
+      <widget
+        v-if="item.widget !== 'component'"
+        :item="item"
+        v-model="form[prop]"
+      ></widget>
+      <Component
+        v-else-if="item.widget === 'component'"
+        :is="item.component"
+        v-model="form[prop]"
+      ></Component>
+      <FromRender
+        v-if="item.childFrom"
+        v-model="form[prop]"
+        :form-attritube="item.childFrom"
+      ></FromRender>
     </el-form-item>
   </el-form>
 </template>
 
 <script setup lang="ts">
+import FromRender from "@/render/formRender/index.vue";
 import { FORM_PROPERTIES, FORM_RENDER } from "@/interface/field.ts";
-import { computed, onMounted, Ref, ref } from "vue";
+import { computed, onMounted, Ref, ref, shallowRef } from "vue";
 import { AnyObject } from "@/interface/util.ts";
 import Widget from "@/render/formRender/widget.vue";
 
@@ -53,13 +71,21 @@ const form = computed({
 const getDefaultValue = () => {
   Object.keys(formItems.value).forEach((item) => {
     if (form.value[formItems.value[item].prop] === undefined) {
-      console.log(formItems.value[item].prop);
       form.value[formItems.value[item].prop] =
         formItems.value[item].defaultValue;
     }
   });
 };
 getDefaultValue();
+
+const getHiddenFunc = (item: any) => {
+  const func = "return " + item;
+  return new Function("item", "form", func);
+};
+
+const getHidden = (item: any) => {
+  return getHiddenFunc(item)(item, form.value);
+};
 
 onMounted(() => {});
 </script>
