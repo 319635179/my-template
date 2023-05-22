@@ -71,7 +71,9 @@ const test_form: FORM_RENDER = {
         widget: 'component',
         column: 2,
         component: shallowRef(Test),
-        defaultValue: {test: ""}
+        attribute: {
+          ttt: {label: 'ttt', key: 't1', value: 't2'},
+        }
       }
     )
   },

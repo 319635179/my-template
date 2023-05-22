@@ -60,7 +60,7 @@ export interface FORM_ATTRIBUTE {
   required?: boolean;
   hidden?: string; // 联动语句
   component?: any; // widget为component时，传入组件
-  attribute?: { [key: string]: META_VALUE }; // 传入组件数据
+  attribute?: { [key: string]: any }; // 传入组件数据
   childFrom?: FORM_RENDER; // 子表单
   verifyType?: VERIFY_TYPE;
   verify?: (rule: any, value: any, callback: any) => any;

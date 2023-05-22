@@ -7,10 +7,11 @@ import { computed } from "vue";
 
 const props = withDefaults(
   defineProps<{
-    modelValue: { test: string },
+    modelValue: any,
+    ttt?: any;
   }>(),
   {
-    modelValue: {test: ''},
+    modelValue: {},
   }
 );
 console.log(props);
@@ -27,6 +28,12 @@ const data = computed({
     emits("change", data);
   },
 });
+
+const init = () => {
+  emits('update:modelValue', props.modelValue);
+  emits('change', props.modelValue);
+}
+init();
 </script>
 
 <style scoped lang="less"></style>

@@ -28,6 +28,7 @@
         v-else-if="item.widget === 'component'"
         :is="item.component"
         v-model="form[prop]"
+        v-bind="item.attribute"
       ></Component>
       <FromRender
         v-if="item.childFrom"
