@@ -36,7 +36,7 @@ const test_form: FORM_RENDER = {
       { label: "ccc", prop: "ccc" },
       {
         widget: "number",
-        defaultValue: 1,
+        defaultValue: 111,
         disabled: true,
       }
     ),
@@ -48,7 +48,7 @@ const test_form: FORM_RENDER = {
           min: 20,
           max: 40,
         },
-        defaultValue: 27,
+        defaultValue: 26,
         column: 3,
       }
     ),

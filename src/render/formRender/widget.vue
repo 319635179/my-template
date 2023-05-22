@@ -61,6 +61,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { FORM_ITEM } from "@/interface/field.ts";
+import "./widget.less"
 
 const props = defineProps<{
   item: FORM_ITEM;

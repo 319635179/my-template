@@ -12,7 +12,7 @@
       v-for="(item, prop, index) in formItems"
       :label="item.label"
       :style="item.style"
-      :class="item.className + ' item-column-' + item.column"
+      :class="(item.className || '') + ' item-column-' + (item.column || 1)"
       :label-width="item.style?.labelWidth || formLabelWidth"
       :required="item.required"
     >
@@ -53,6 +53,7 @@ const form = computed({
 const getDefaultValue = () => {
   Object.keys(formItems.value).forEach((item) => {
     if (form.value[formItems.value[item].prop] === undefined) {
+      console.log(formItems.value[item].prop);
       form.value[formItems.value[item].prop] =
         formItems.value[item].defaultValue;
     }
