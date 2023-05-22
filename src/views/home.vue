@@ -3,6 +3,7 @@
   <el-button type="primary" @click="handleSubmit">{{
     userStore.name
   }}</el-button>
+  {{testData.test}}
 </template>
 
 <script setup lang="ts">
@@ -11,9 +12,11 @@ import { Post } from "@/common/request.ts";
 import { useUserStore } from "@/store/user.ts";
 import { FORM_RENDER, META_ITEM } from "@/interface/field.ts";
 import { getFormItem } from "@/common/field.ts";
-import { onMounted, ref, shallowRef } from "vue";
+import { h, onMounted, ref, shallowRef } from "vue";
 import { getHidden } from "@/util";
 import Test from "@/views/test.vue";
+import { $dialog } from "@/render/dialogRender/index.ts";
+import modal from "@/common/modal.ts";
 
 const userStore = useUserStore();
 const test: META_ITEM = {
@@ -83,6 +86,12 @@ const formData = ref({});
 
 const handleSubmit = () => {
   console.log(formData.value);
+  modal.dialog('222', h(Test, {
+    modelValue: testData.value,
+    'update:modelValue': (val) =>{
+      testData.value = val;
+    }
+  }))
 };
 Post("/login").then((resp) => {
   if (resp.success) {
@@ -93,6 +102,7 @@ Post("/login").then((resp) => {
   }
 });
 
+const testData = ref({test: 222})
 onMounted(() => {
   console.log(getHidden([
     {prop: 'a', val: 1},
