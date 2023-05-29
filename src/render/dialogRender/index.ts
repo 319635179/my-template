@@ -22,7 +22,6 @@ export const $dialog = (title: string, com: any, options?: AnyObject) => {
   }
 
   const unmount = () =>{
-    console.log(111);
     dialog.unmount();
   }
   mount();

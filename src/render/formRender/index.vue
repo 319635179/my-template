@@ -30,27 +30,21 @@
         v-model="form[prop]"
         v-bind="item.attribute"
       ></Component>
-      <FromRender
-        v-if="item.childFrom"
-        v-model="form[prop]"
-        :form-attritube="item.childFrom"
-      ></FromRender>
     </el-form-item>
   </el-form>
 </template>
 
 <script setup lang="ts">
-import FromRender from "@/render/formRender/index.vue";
 import { FORM_PROPERTIES, FORM_RENDER } from "@/interface/field.ts";
-import { computed, onMounted, Ref, ref, shallowRef } from "vue";
+import { computed, onMounted, Ref, ref } from "vue";
 import { AnyObject } from "@/interface/util.ts";
 import Widget from "@/render/formRender/widget.vue";
 
-const props = defineProps<{
-  formAttribute: FORM_RENDER;
-  modelValue: AnyObject;
-}>();
-
+const props =
+  defineProps<{
+    formAttribute: FORM_RENDER;
+    modelValue: AnyObject;
+  }>();
 const emits = defineEmits(["update:modelValue", "change"]);
 
 const formLabelWidth = props.formAttribute.labelWidth || 120;

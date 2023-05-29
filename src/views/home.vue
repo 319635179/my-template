@@ -13,9 +13,7 @@ import { useUserStore } from "@/store/user.ts";
 import { FORM_RENDER, META_ITEM } from "@/interface/field.ts";
 import { getFormItem } from "@/common/field.ts";
 import { h, onMounted, ref, shallowRef } from "vue";
-import { getHidden } from "@/util";
 import Test from "@/views/test.vue";
-import { $dialog } from "@/render/dialogRender/index.ts";
 import modal from "@/common/modal.ts";
 
 const userStore = useUserStore();
@@ -78,14 +76,13 @@ const test_form: FORM_RENDER = {
           ttt: {label: 'ttt', key: 't1', value: 't2'},
         }
       }
-    )
+    ),
   },
 };
 
 const formData = ref({});
 
 const handleSubmit = () => {
-  console.log(formData.value);
   modal.dialog('222', h(Test, {
     modelValue: testData.value,
     'update:modelValue': (val) =>{
@@ -104,11 +101,6 @@ Post("/login").then((resp) => {
 
 const testData = ref({test: 222})
 onMounted(() => {
-  console.log(getHidden([
-    {prop: 'a', val: 1},
-    {prop: 'b', val: 2},
-    {prop: 'c', val: 3},
-  ], false));
 });
 </script>
 

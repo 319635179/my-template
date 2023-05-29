@@ -14,7 +14,6 @@ const props = withDefaults(
     modelValue: {},
   }
 );
-console.log(props);
 
 const emits = defineEmits(["update:modelValue", "change"]);
 
