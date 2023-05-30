@@ -40,11 +40,10 @@ import { computed, onMounted, Ref, ref } from "vue";
 import { AnyObject } from "@/interface/util.ts";
 import Widget from "@/render/formRender/widget.vue";
 
-const props =
-  defineProps<{
-    formAttribute: FORM_RENDER;
-    modelValue: AnyObject;
-  }>();
+const props = defineProps<{
+  formAttribute: FORM_RENDER;
+  modelValue: AnyObject;
+}>();
 const emits = defineEmits(["update:modelValue", "change"]);
 
 const formLabelWidth = props.formAttribute.labelWidth || 120;

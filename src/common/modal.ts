@@ -24,8 +24,8 @@ const modal = {
     });
   },
   dialog: (title: string, com: any, options?: AnyObject) => {
-    $dialog(title,com,options);
-  }
+    $dialog(title, com, options);
+  },
 };
 
 export default modal;

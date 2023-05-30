@@ -3,7 +3,7 @@
   <el-button type="primary" @click="handleSubmit">{{
     userStore.name
   }}</el-button>
-  {{testData.test}}
+  {{ testData.test }}
 </template>
 
 <script setup lang="ts">
@@ -64,17 +64,18 @@ const test_form: FORM_RENDER = {
           { label: "b", key: 2 },
         ],
         defaultValue: 2,
-        hidden: 'form.ddd % 2'
+        hidden: "form.ddd === 26",
       }
     ),
     ...getFormItem(
-      {label: 'fff', prop: 'fff'}, {
-        widget: 'component',
+      { label: "fff", prop: "fff" },
+      {
+        widget: "component",
         column: 2,
         component: shallowRef(Test),
         attribute: {
-          ttt: {label: 'ttt', key: 't1', value: 't2'},
-        }
+          ttt: { label: "ttt", key: "t1", value: "t2" },
+        },
       }
     ),
   },
@@ -83,12 +84,15 @@ const test_form: FORM_RENDER = {
 const formData = ref({});
 
 const handleSubmit = () => {
-  modal.dialog('222', h(Test, {
-    modelValue: testData.value,
-    'update:modelValue': (val) =>{
-      testData.value = val;
-    }
-  }))
+  modal.dialog(
+    "222",
+    h(Test, {
+      modelValue: testData.value,
+      "update:modelValue": (val) => {
+        testData.value = val;
+      },
+    })
+  );
 };
 Post("/login").then((resp) => {
   if (resp.success) {
@@ -99,9 +103,8 @@ Post("/login").then((resp) => {
   }
 });
 
-const testData = ref({test: 222})
-onMounted(() => {
-});
+const testData = ref({ test: 222 });
+onMounted(() => {});
 </script>
 
 <style scoped lang="less"></style>

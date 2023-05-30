@@ -1,5 +1,11 @@
 <template>
-  <el-dialog draggable :title="title" width="30%" model-value :before-close="onClose">
+  <el-dialog
+    draggable
+    :title="title"
+    width="30%"
+    model-value
+    :before-close="onClose"
+  >
     <div>{{ modelValue }}</div>
     <Component :is="com"></Component>
     <el-button @click="onClose">关闭</el-button>
