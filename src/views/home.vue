@@ -67,28 +67,28 @@ const test_form: FORM_RENDER = {
         hidden: "form.ddd === 26",
       }
     ),
-    ...getFormItem(
-      { label: "fff", prop: "fff" },
-      {
-        widget: "component",
-        column: 2,
-        component: shallowRef(Test),
-        attribute: {
-          ttt: { label: "ttt", key: "t1", value: "t2" },
-        },
-      }
-    ),
+    // ...getFormItem(
+    //   { label: "fff", prop: "fff" },
+    //   {
+    //     widget: "component",
+    //     column: 2,
+    //     component: shallowRef(Test),
+    //     attribute: {
+    //       ttt: { label: "ttt", key: "t1", value: "t2" },
+    //     },
+    //   }
+    // ),
   },
 };
 
 const formData = ref({});
-
+const testData = ref({ test: 222 });
 const handleSubmit = () => {
-  modal.dialog(
+  modal.drawer(
     "222",
     h(Test, {
       modelValue: testData.value,
-      "update:modelValue": (val) => {
+      "onUpdate:modelValue": (val) => {
         testData.value = val;
       },
     })
@@ -103,7 +103,6 @@ Post("/login").then((resp) => {
   }
 });
 
-const testData = ref({ test: 222 });
 onMounted(() => {});
 </script>
 

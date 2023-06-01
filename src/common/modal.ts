@@ -3,6 +3,7 @@ import "element-plus/es/components/message/style/css";
 import { ElMessage } from "element-plus";
 import { AnyObject } from "@/interface/util.ts";
 import { $dialog } from "@/render/dialogRender/index.ts";
+import { $drawer } from "@/render/drawerRender/index.ts";
 
 const modal = {
   warning: (mes: string) => {
@@ -26,6 +27,9 @@ const modal = {
   dialog: (title: string, com: any, options?: AnyObject) => {
     $dialog(title, com, options);
   },
+  drawer: (title: string, com: any, options?: AnyObject) =>{
+    $drawer(title, com, options);
+  }
 };
 
 export default modal;

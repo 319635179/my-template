@@ -1,9 +1,13 @@
 <template>
   <el-input v-model="data.test"></el-input>
+  <el-button @click="openDia"></el-button>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
+import modal from "@/common/modal.ts";
+import { h, ref } from "vue";
+import Test from "@/views/test.vue";
 
 const props = withDefaults(
   defineProps<{
@@ -32,6 +36,18 @@ const init = () => {
   emits("update:modelValue", props.modelValue);
   emits("change", props.modelValue);
 };
+const testData = ref({ test: 333 });
+const openDia = () =>{
+  modal.dialog(
+    "333",
+    h(Test, {
+      modelValue: testData.value,
+      "onUpdate:modelValue": (val) => {
+        testData.value = val;
+      },
+    })
+  );
+}
 init();
 </script>
 

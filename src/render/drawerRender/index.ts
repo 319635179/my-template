@@ -1,10 +1,10 @@
 import { AnyObject } from "@/interface/util.ts";
 import { createApp } from "vue";
-import Dialog from "./index.vue";
+import Drawer from './index.vue'
 
 let isMounted = false;
-export const $dialog = (title: string, com: any, options?: AnyObject) => {
-  const dialog = createApp(Dialog, {
+export const $drawer = (title: string, com: any, options?: AnyObject) => {
+  const drawer = createApp(Drawer, {
     title,
     com,
     onClose: () => {
@@ -21,12 +21,12 @@ export const $dialog = (title: string, com: any, options?: AnyObject) => {
       unmount();
     }
     isMounted = true;
-    dialog.mount("#dialog");
+    drawer.mount("#drawer");
   };
 
   const unmount = () => {
     isMounted = false;
-    dialog.unmount();
+    drawer.unmount();
   };
   mount();
 };
