@@ -1,6 +1,8 @@
 <template>
   <el-container class="m-tem">
-    <el-header><Header /></el-header>
+    <el-header>
+      <Header />
+    </el-header>
     <el-main class="tem-main">
       <el-container>
         <el-aside>

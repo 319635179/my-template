@@ -1,10 +1,19 @@
 import { createApp } from "vue";
-import App from "./App.vue";
+import MainApp from "./App.vue";
 import router from "./router";
 import "@/assets/style/main.css";
 import pinia from "@/store";
+import { App } from "vue";
 
-const app = createApp(App);
-app.use(pinia);
-app.use(router);
-app.mount("#app");
+let app:App<Element>;
+export const mountApp = () => {
+  app = createApp(MainApp);
+  app.use(pinia);
+  app.use(router);
+  app.mount("#app");
+}
+mountApp();
+
+export const unMountApp = () => {
+  app.unmount();
+}
