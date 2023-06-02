@@ -27,9 +27,9 @@ const modal = {
   dialog: (title: string, com: any, options?: AnyObject) => {
     $dialog(title, com, options);
   },
-  drawer: (title: string, com: any, options?: AnyObject) =>{
+  drawer: (title: string, com: any, options?: AnyObject) => {
     $drawer(title, com, options);
-  }
+  },
 };
 
 export default modal;

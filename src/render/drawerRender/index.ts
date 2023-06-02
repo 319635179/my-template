@@ -1,6 +1,6 @@
 import { AnyObject } from "@/interface/util.ts";
 import { createApp } from "vue";
-import Drawer from './index.vue'
+import Drawer from "./index.vue";
 
 let isMounted = false;
 export const $drawer = (title: string, com: any, options?: AnyObject) => {

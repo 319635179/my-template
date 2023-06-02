@@ -12,7 +12,7 @@ import { Post } from "@/common/request.ts";
 import { useUserStore } from "@/store/user.ts";
 import { FORM_RENDER, META_ITEM } from "@/interface/field.ts";
 import { getFormItem } from "@/common/field.ts";
-import { h, onMounted, ref, shallowRef } from "vue";
+import { h, onMounted, ref } from "vue";
 import Test from "@/views/test.vue";
 import modal from "@/common/modal.ts";
 

@@ -7,18 +7,17 @@
 </template>
 
 <script setup lang="ts">
-
 const props = defineProps<{
   modelValue: any;
   com: any;
   title: any;
 }>();
 
-const emits = defineEmits(['update:modelValue', 'change', 'close']);
+const emits = defineEmits(["update:modelValue", "change", "close"]);
 
 const handleClose = () => {
-  emits('close');
-}
+  emits("close");
+};
 </script>
 
 <style scoped lang="less"></style>

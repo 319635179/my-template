@@ -4,9 +4,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, h, ref } from "vue";
 import modal from "@/common/modal.ts";
-import { h, ref } from "vue";
 import Test from "@/views/test.vue";
 
 const props = withDefaults(
@@ -37,7 +36,7 @@ const init = () => {
   emits("change", props.modelValue);
 };
 const testData = ref({ test: 333 });
-const openDia = () =>{
+const openDia = () => {
   modal.dialog(
     "333",
     h(Test, {
@@ -47,7 +46,7 @@ const openDia = () =>{
       },
     })
   );
-}
+};
 init();
 </script>
 

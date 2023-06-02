@@ -1,22 +1,19 @@
 <template>
-<div>
-  <el-button @click="login">登录</el-button>
-</div>
+  <div>
+    <el-button @click="login">登录</el-button>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { mountApp } from "@/main.ts";
 import { unMountApp } from "@/index.ts";
-import router from "@/router";
 import { routerPush } from "@/router/option.ts";
 
 const login = () => {
-  mountApp()
+  mountApp();
   unMountApp();
-  routerPush({name: 'home'});
-}
+  routerPush({ name: "home" });
+};
 </script>
 
-<style scoped lang="less">
-
-</style>
+<style scoped lang="less"></style>
