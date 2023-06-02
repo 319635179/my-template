@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import {mountApp} from "@/views/fullScreen/index.ts";
+import {mountApp} from "@/index.ts";
 import {unMountApp} from "@/main.ts";
 import fullRouter from "@/router/fullRouter";
 

@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { mountApp } from "@/main.ts";
-import { unMountApp } from "@/views/fullScreen/index.ts";
+import { unMountApp } from "@/index.ts";
 import router from "@/router";
 
 const login = () => {
