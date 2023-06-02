@@ -9,9 +9,11 @@
         <el-main>
           <el-container>
             <el-header class="tem-bread">bread</el-header>
-            <el-main>
+            <el-main class="tem-main-body">
               <div class="router-view">
-                <router-view></router-view>
+                <div class="main-view">
+                  <router-view></router-view>
+                </div>
               </div>
             </el-main>
           </el-container>
@@ -22,8 +24,8 @@
 </template>
 
 <script setup lang="ts">
-import Header from "@/components/header/index.vue"
-import Aside from "@/components/aside/index.vue"
+import Header from "@/components/header/index.vue";
+import Aside from "@/components/aside/index.vue";
 </script>
 
 <style scoped></style>

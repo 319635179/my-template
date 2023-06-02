@@ -28,8 +28,19 @@
   --el-header-height: 30px;
 }
 
-.router-view {
-  height: calc(100vh - 80px);
-  padding: 20px;
+.tem-main-body {
   background: var(--bg-color-info);
+
+  .router-view {
+    background: var(--bg-color);
+    height: calc(100vh - 110px);
+    margin: 15px;
+    padding: 10px;
+    overflow: auto;
+
+    .main-view {
+      height: 100%;
+      min-width: 720px;
+    }
+  }
 }
