@@ -1,2 +1,4 @@
 @import "resetel.less";
 @import "common.less";
+@import "./variable/index.css";
+@import "reset.less";
