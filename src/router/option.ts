@@ -1,5 +1,7 @@
 import router from "@/router/index.ts";
 import { AnyObject } from "@/interface/util.ts";
+import { isFullRouter } from "@/router/fullRouter/config.ts";
+import fullRouter from "@/router/fullRouter";
 
 export interface ROUTER_PUSH_ITEM {
   name?: string;
@@ -7,7 +9,11 @@ export interface ROUTER_PUSH_ITEM {
 }
 export const routerPush = (obj: ROUTER_PUSH_ITEM) => {
   if (obj.name) {
-    router.push({ name: obj.name });
+    if (isFullRouter[obj.name]) {
+      fullRouter.push({ name: obj.name });
+    } else {
+      router.push({ name: obj.name });
+    }
   } else if (obj.path) {
     const p = obj.path.split("?");
     const path = p[0];
@@ -21,6 +27,10 @@ export const routerPush = (obj: ROUTER_PUSH_ITEM) => {
         });
       }
     }
-    router.push({ path, query });
+    if (isFullRouter[path]) {
+      fullRouter.push({ path, query });
+    } else {
+      router.push({ path, query });
+    }
   }
 };

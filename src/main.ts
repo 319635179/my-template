@@ -4,7 +4,9 @@ import router from "./router";
 import "@/assets/style/main.css";
 import pinia from "@/store";
 import { App } from "vue";
+import { initIsFullRouter } from "@/router/fullRouter/config.ts";
 
+initIsFullRouter();
 let app:App<Element>;
 export const mountApp = () => {
   app = createApp(MainApp);

@@ -13,11 +13,12 @@
 import {mountApp} from "@/index.ts";
 import {unMountApp} from "@/main.ts";
 import fullRouter from "@/router/fullRouter";
+import { routerPush } from "@/router/option.ts";
 
 const goLogin = () => {
   mountApp();
   unMountApp();
-  fullRouter.push({name: 'login'})
+  routerPush({name: 'login'})
 }
 </script>
 

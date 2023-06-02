@@ -8,11 +8,12 @@
 import { mountApp } from "@/main.ts";
 import { unMountApp } from "@/index.ts";
 import router from "@/router";
+import { routerPush } from "@/router/option.ts";
 
 const login = () => {
   mountApp()
   unMountApp();
-  router.push({name: 'home'});
+  routerPush({name: 'home'});
 }
 </script>
 
