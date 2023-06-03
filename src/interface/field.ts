@@ -1,5 +1,7 @@
+import { FormItemRule } from "element-plus";
+
 export type META_TYPE = "string" | "number" | "array" | "boolean" | "object";
-export type VERIFY_TYPE = "ip" | "password" | "date" | "time";
+export type FORMAT_TYPE = "ip" | "password" | "date" | "time";
 export type WIDGET_TYPE =
   | "text"
   | "textarea"
@@ -61,8 +63,8 @@ export interface FORM_ATTRIBUTE {
   hidden?: string; // 联动语句
   component?: any; // widget为component时，传入组件
   attribute?: { [key: string]: any }; // 传入组件数据
-  verifyType?: VERIFY_TYPE;
-  verify?: (rule: any, value: any, callback: any) => any;
+  format?: FORMAT_TYPE;
+  rules?: FormItemRule[];
   child?: FORM_RENDER;
 }
 export interface FORM_ITEM extends META_ITEM, FORM_ATTRIBUTE {}

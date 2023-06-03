@@ -14,6 +14,8 @@
       :class="(item.className || '') + ' item-column-' + (item.column || 1)"
       :label-width="item.style?.labelWidth || formLabelWidth"
       :required="item.required"
+      :prop="item.prop"
+      :rules="getRules(item)"
       :style="{
         display: getHidden(item.hidden) ? 'none' : '',
         ...item.style,
@@ -45,7 +47,8 @@ import { FORM_PROPERTIES, FORM_RENDER } from "@/interface/field.ts";
 import { computed, defineComponent, onMounted, Ref, ref } from "vue";
 import { AnyObject } from "@/interface/util.ts";
 import Widget from "@/render/formRender/widget.vue";
-import "./index.less"
+import "./index.less";
+import { getRules } from "@/common/field.ts";
 
 defineComponent({
   name: "FormRender",

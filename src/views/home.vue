@@ -18,7 +18,7 @@ import FormRender from "@/render/formRender/formRender.vue";
 
 const userStore = useUserStore();
 const test: META_ITEM = {
-  label: "test",
+  label: "ip",
   prop: "test",
   type: "string",
 };
@@ -34,6 +34,16 @@ const test_form: FORM_RENDER = {
       },
       column: 2,
       required: true,
+      format: 'ip',
+      rules: [{
+        validator: (rule, value, callback) => {
+          if(value === '11.11.11.11') {
+            callback("不能这样写");
+          }else {
+            callback();
+          }
+        }
+      }]
     }),
     ...getFormItem(
       { label: "ccc", prop: "ccc" },
