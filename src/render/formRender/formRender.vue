@@ -30,12 +30,12 @@
         v-model="form[prop]"
         v-bind="item.attribute"
       ></Component>
-      <Index
+      <FormRender
         class="form-child"
         v-if="item.child"
         :form-attribute="item.child"
         v-model="form[prop]"
-      ></Index>
+      ></FormRender>
     </el-form-item>
   </el-form>
 </template>

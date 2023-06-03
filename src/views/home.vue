@@ -14,7 +14,7 @@ import { getFormItem } from "@/common/field.ts";
 import { h, onMounted, ref, shallowRef } from "vue";
 import Test from "@/views/test.vue";
 import modal from "@/common/modal.ts";
-import FormRender from "@/render/formRender/index.vue";
+import FormRender from "@/render/formRender/formRender.vue";
 
 const userStore = useUserStore();
 const test: META_ITEM = {

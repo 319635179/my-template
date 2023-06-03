@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { mountApp } from "@/main.ts";
-import { unMountApp } from "@/index.ts";
+import { unMountApp } from "@/full.ts";
 import { routerPush } from "@/router/option.ts";
 
 const login = () => {

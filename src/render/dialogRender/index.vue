@@ -2,23 +2,34 @@
   <el-dialog
     draggable
     :title="title"
-    width="30%"
+    :width="width || '30%'"
     model-value
     :before-close="handleClose"
   >
-    <div>{{ modelValue }}</div>
     <Component :is="com"></Component>
     <el-button @click="handleClose">关闭</el-button>
+    <template #footer>
+      <el-button
+        v-for="item in footerBtn"
+        @click="item.option()"
+        :type="item.type"
+        >{{ item.label }}</el-button
+      >
+    </template>
   </el-dialog>
 </template>
 
 <script setup lang="ts">
+import { BUTTON } from "@/interface/util.ts";
+
 const props = defineProps<{
-  modelValue?: any;
   com: any;
   title: any;
+  width?: string;
   onClose: any;
+  footerBtn?: BUTTON[];
 }>();
+console.log(props.footerBtn);
 const emits = defineEmits(["update:modelValue", "change", "close"]);
 
 const handleClose = () => {

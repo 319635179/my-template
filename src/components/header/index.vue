@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { mountApp } from "@/index.ts";
+import { mountApp } from "@/full.ts";
 import { unMountApp } from "@/main.ts";
 import { routerPush } from "@/router/option.ts";
 

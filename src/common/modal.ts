@@ -27,6 +27,16 @@ const modal = {
   dialog: (title: string, com: any, options?: AnyObject) => {
     $dialog(title, com, options);
   },
+  popups: (title: string, com: any, options?: AnyObject) => {
+    options = {};
+    options.width = '45%';
+    $dialog(title, com, options);
+  },
+  largeDia: (title: string, com: any, options?: AnyObject) => {
+    options = {};
+    options.width = '60%';
+    $dialog(title, com, options);
+  },
   drawer: (title: string, com: any, options?: AnyObject) => {
     $drawer(title, com, options);
   },
