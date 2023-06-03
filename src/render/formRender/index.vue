@@ -31,6 +31,7 @@
         v-bind="item.attribute"
       ></Component>
       <Index
+        class="form-child"
         v-if="item.child"
         :form-attribute="item.child"
         v-model="form[prop]"
@@ -44,6 +45,7 @@ import { FORM_PROPERTIES, FORM_RENDER } from "@/interface/field.ts";
 import { computed, defineComponent, onMounted, Ref, ref } from "vue";
 import { AnyObject } from "@/interface/util.ts";
 import Widget from "@/render/formRender/widget.vue";
+import "./index.less"
 
 defineComponent({
   name: "FormRender",
