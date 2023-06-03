@@ -1,4 +1,4 @@
-import { FormItemRule } from "element-plus";
+import { FormItemRule } from "./element.ts";
 
 export type META_TYPE = "string" | "number" | "array" | "boolean" | "object";
 export type FORMAT_TYPE = "ip" | "password" | "date" | "time";
