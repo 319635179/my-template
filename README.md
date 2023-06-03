@@ -79,6 +79,14 @@ export type WIDGET_TYPE =
   | "component";
 ```
 
+$properties$中的数据，通过如下代码进行添加：
+
+```ts
+...getFormItem(META, EXTRA?)
+```
+
+
+
 ### 2、弹窗、抽屉
 
 每次生成弹窗或抽屉时，生成新的实例挂载到$\#dialog$或$\#drawer$上，关闭时注销实例。
