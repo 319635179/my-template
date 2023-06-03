@@ -37,7 +37,7 @@ const init = () => {
 };
 const testData = ref({ test: 333 });
 const openDia = () => {
-  modal.largeDia(
+  modal.dialog(
     "333",
     h(Test, {
       modelValue: testData.value,

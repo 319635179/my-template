@@ -2,7 +2,7 @@
   <el-dialog
     draggable
     :title="title"
-    :width="width || '30%'"
+    :width="width || '450px'"
     model-value
     :before-close="handleClose"
   >
@@ -21,6 +21,7 @@
 
 <script setup lang="ts">
 import { BUTTON } from "@/interface/util.ts";
+import "./index.less"
 
 const props = defineProps<{
   com: any;
