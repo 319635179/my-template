@@ -1,19 +1,16 @@
 import { App, createApp } from "vue";
-import MainApp from "./App.vue";
-import router from "./router";
+import FullApp from "@/views/fullScreen/index.vue";
 import "@/assets/style/main.css";
 import pinia from "@/store";
-import { initIsFullRouter } from "@/router/fullRouter/config.ts";
+import fullRouter from "@/router/fullRouter";
 
-initIsFullRouter();
 let app: App<Element>;
 export const mountApp = () => {
-  app = createApp(MainApp);
+  app = createApp(FullApp);
   app.use(pinia);
-  app.use(router);
-  app.mount("#app");
+  app.use(fullRouter);
+  app.mount("#full");
 };
-mountApp();
 
 export const unMountApp = () => {
   app.unmount();

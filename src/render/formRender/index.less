@@ -1,0 +1,53 @@
+.form-column {
+  &-1 {
+    > .el-form-item {
+      width: 100%;
+    }
+  }
+
+  &-2 {
+    > .el-form-item {
+      width: 40%;
+      margin-right: 10%;
+    }
+
+    > .item-column-2 {
+      width: 90%;
+    }
+  }
+
+  &-3 {
+    > .el-form-item {
+      width: 30%;
+      margin-right: 3%;
+    }
+
+    > .item-column {
+      &-2 {
+        width: 63%;
+      }
+      &-3 {
+        width: 97%;
+      }
+    }
+  }
+}
+
+
+
+.el-input-number,
+.el-input__wrapper {
+  // 放入resetel的话，引入会在element引入css之前，不生效
+  width: 100%;
+}
+
+.form-child {
+  width: 100%;
+
+  .el-form-item__content {
+    flex-wrap: unset;
+  }
+  .el-form-item {
+    margin-bottom: 10px;
+  }
+}

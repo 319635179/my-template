@@ -1,13 +1,14 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import AutoImport from "unplugin-auto-import/vite";
-import Components from "unplugin-vue-components/vite";
 import {ElementPlusResolver} from "unplugin-vue-components/resolvers";
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
 import { fileURLToPath, URL } from "node:url";
+import {viteMockServe} from "vite-plugin-mock";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  server: {
+  server:{
     port: 7010,
     open: true,
   },
@@ -19,6 +20,10 @@ export default defineConfig({
     Components({
       resolvers: [ElementPlusResolver()],
     }),
+    viteMockServe({
+      mockPath: "./mock",
+      localEnabled: true,
+    })
   ],
   resolve: {
     alias: {

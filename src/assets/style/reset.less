@@ -1,0 +1,48 @@
+.m-tem {
+  .tem-header {
+    height: 50px;
+    line-height: 50px;
+    padding: 0 20px;
+    display: flex;
+    color: white;
+    background: #a20415;
+
+    .header-name {
+      .logo {
+        display: inline-block;
+        margin-right: 10px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #278b00;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .tem-aside {
+    width: var(--aside-width);
+    transition: 200ms;
+  }
+
+  .tem-bread {
+    --el-header-height: 30px;
+  }
+
+  .tem-main-body {
+    background: var(--bg-color-info);
+
+    .router-view {
+      background: var(--bg-color);
+      height: calc(100vh - 100px);
+      margin: 10px;
+      padding: 10px;
+      overflow: auto;
+
+      .main-view {
+        height: 100%;
+        min-width: 720px;
+      }
+    }
+  }
+}
