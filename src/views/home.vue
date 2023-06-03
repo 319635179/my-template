@@ -81,11 +81,14 @@ const test_form: FORM_RENDER = {
     ...getFormItem(
       { label: "ggg", prop: "ggg" },
       {
+        column: 1,
         child: {
-          labelWidth: 1,
+          labelWidth: 100,
           column: 1,
           properties: {
-            ...getFormItem({ label: "", prop: "test" }),
+            ...getFormItem({ label: "test0", prop: "test1" }),
+            ...getFormItem({ label: "test1", prop: "test2" }),
+            ...getFormItem({ label: "test2", prop: "test3" }),
           },
         },
       }
