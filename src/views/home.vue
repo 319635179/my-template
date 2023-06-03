@@ -7,14 +7,14 @@
 </template>
 
 <script setup lang="ts">
-import FormRender from "@/render/formRender/index.vue";
 import { Post } from "@/common/request.ts";
 import { useUserStore } from "@/store/user.ts";
 import { FORM_RENDER, META_ITEM } from "@/interface/field.ts";
 import { getFormItem } from "@/common/field.ts";
-import { h, onMounted, ref } from "vue";
+import { h, onMounted, ref, shallowRef } from "vue";
 import Test from "@/views/test.vue";
 import modal from "@/common/modal.ts";
+import FormRender from "@/render/formRender/index.vue";
 
 const userStore = useUserStore();
 const test: META_ITEM = {
@@ -67,23 +67,36 @@ const test_form: FORM_RENDER = {
         hidden: "form.ddd === 26",
       }
     ),
-    // ...getFormItem(
-    //   { label: "fff", prop: "fff" },
-    //   {
-    //     widget: "component",
-    //     column: 2,
-    //     component: shallowRef(Test),
-    //     attribute: {
-    //       ttt: { label: "ttt", key: "t1", value: "t2" },
-    //     },
-    //   }
-    // ),
+    ...getFormItem(
+      { label: "fff", prop: "fff" },
+      {
+        widget: "component",
+        column: 2,
+        component: shallowRef(Test),
+        attribute: {
+          ttt: { label: "ttt", key: "t1", value: "t2" },
+        },
+      }
+    ),
+    ...getFormItem(
+      { label: "ggg", prop: "ggg" },
+      {
+        child: {
+          labelWidth: 1,
+          column: 1,
+          properties: {
+            ...getFormItem({ label: "", prop: "test" }),
+          },
+        },
+      }
+    ),
   },
 };
 
 const formData = ref({});
 const testData = ref({ test: 222 });
 const handleSubmit = () => {
+  console.log(formData.value);
   modal.drawer(
     "222",
     h(Test, {

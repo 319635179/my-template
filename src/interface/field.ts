@@ -63,6 +63,7 @@ export interface FORM_ATTRIBUTE {
   attribute?: { [key: string]: any }; // 传入组件数据
   verifyType?: VERIFY_TYPE;
   verify?: (rule: any, value: any, callback: any) => any;
+  child?: FORM_RENDER;
 }
 export interface FORM_ITEM extends META_ITEM, FORM_ATTRIBUTE {}
 

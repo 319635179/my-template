@@ -20,7 +20,7 @@
       }"
     >
       <widget
-        v-if="item.widget !== 'component'"
+        v-if="item.widget !== 'component' && !item.child"
         :item="item"
         v-model="form[prop]"
       ></widget>
@@ -30,20 +30,30 @@
         v-model="form[prop]"
         v-bind="item.attribute"
       ></Component>
+      <Index
+        v-if="item.child"
+        :form-attribute="item.child"
+        v-model="form[prop]"
+      ></Index>
     </el-form-item>
   </el-form>
 </template>
 
 <script setup lang="ts">
 import { FORM_PROPERTIES, FORM_RENDER } from "@/interface/field.ts";
-import { computed, onMounted, Ref, ref } from "vue";
+import { computed, defineComponent, onMounted, Ref, ref } from "vue";
 import { AnyObject } from "@/interface/util.ts";
 import Widget from "@/render/formRender/widget.vue";
+
+defineComponent({
+  name: "FormRender",
+});
 
 const props = defineProps<{
   formAttribute: FORM_RENDER;
   modelValue: AnyObject;
 }>();
+console.log(props.formAttribute);
 const emits = defineEmits(["update:modelValue", "change"]);
 
 const formLabelWidth = props.formAttribute.labelWidth || 120;
@@ -56,7 +66,7 @@ const form = computed({
     return props.modelValue;
   },
   set(val) {
-    const data = Object.assign(props.modelValue, val);
+    const data = Object.assign(props.modelValue || {}, val);
     emits("update:modelValue", data);
     emits("change", data);
   },
@@ -64,9 +74,13 @@ const form = computed({
 
 const getDefaultValue = () => {
   Object.keys(formItems.value).forEach((item) => {
+    console.log(form.value);
     if (form.value[formItems.value[item].prop] === undefined) {
       form.value[formItems.value[item].prop] =
         formItems.value[item].defaultValue;
+      if (formItems.value[item].child) {
+        form.value[formItems.value[item].prop] = {};
+      }
     }
   });
 };
