@@ -34,16 +34,18 @@ const test_form: FORM_RENDER = {
       },
       column: 2,
       required: true,
-      format: 'ip',
-      rules: [{
-        validator: (rule, value, callback) => {
-          if(value === '11.11.11.11') {
-            callback("不能这样写");
-          }else {
-            callback();
-          }
-        }
-      }]
+      format: "ip",
+      rules: [
+        {
+          validator: (rule, value, callback) => {
+            if (value === "11.11.11.11") {
+              callback("不能这样写");
+            } else {
+              callback();
+            }
+          },
+        },
+      ],
     }),
     ...getFormItem(
       { label: "ccc", prop: "ccc" },
@@ -82,7 +84,7 @@ const test_form: FORM_RENDER = {
       {
         widget: "component",
         column: 2,
-        component: shallowRef(Test),
+        component: Test,
         attribute: {
           ttt: { label: "ttt", key: "t1", value: "t2" },
         },

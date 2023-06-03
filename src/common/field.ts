@@ -1,10 +1,15 @@
 import { FORM_EXTRA, FORM_ITEM, META_ITEM } from "@/interface/field.ts";
 import { REG_ACCOUNT, REG_DBNAME, REG_EMAIL, REG_ENAME, REG_IP, REG_PHONE } from "@/util/validate.ts";
+import { shallowRef } from "vue";
 
 export const getFormItem = (meta: META_ITEM, extra?: FORM_EXTRA) => {
   const res: FORM_ITEM = { ...meta, ...extra };
   if (!res.placeholder) {
     res.placeholder = "请输入" + res.label;
+  }
+
+  if (res.component) {
+    res.component = shallowRef(res.component);
   }
   return {
     [res.prop]: res,
