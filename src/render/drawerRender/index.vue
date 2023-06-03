@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 const props = defineProps<{
-  modelValue: any;
+  modelValue?: any;
   com: any;
   title: any;
 }>();

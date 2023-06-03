@@ -1,6 +1,6 @@
 <template>
   <el-input v-model="data.test"></el-input>
-  <el-button @click="openDia"></el-button>
+  <el-button @click="openDia">唤出弹窗</el-button>
 </template>
 
 <script setup lang="ts">

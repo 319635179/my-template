@@ -55,7 +55,6 @@ const props = defineProps<{
   formAttribute: FORM_RENDER;
   modelValue: AnyObject;
 }>();
-console.log(props.formAttribute);
 const emits = defineEmits(["update:modelValue", "change"]);
 
 const formLabelWidth = props.formAttribute.labelWidth || 120;
@@ -76,7 +75,6 @@ const form = computed({
 
 const getDefaultValue = () => {
   Object.keys(formItems.value).forEach((item) => {
-    console.log(form.value);
     if (form.value[formItems.value[item].prop] === undefined) {
       form.value[formItems.value[item].prop] =
         formItems.value[item].defaultValue;
