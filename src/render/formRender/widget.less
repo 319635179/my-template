@@ -1,31 +1,35 @@
-.form-column-2 {
-  .el-form-item {
-    width: 40%;
-    margin-right: 10%;
+.form-column {
+  &-1 {
+    >.el-form-item {
+      width: 90%;
+      margin-right: 10%;
+    }
   }
 
-  .item-column-2 {
-    width: 90%;
-  }
-}
+  &-2 {
+    >.el-form-item {
+      width: 40%;
+      margin-right: 10%;
+    }
 
-.form-column-3 {
-  .el-form-item {
-    width: 30%;
-    margin-right: 3%;
+    >.item-column-2 {
+      width: 90%;
+    }
   }
 
-  .item-column-2 {
-    width: 63%;
-  }
-  .item-column-3 {
-    width: 97%;
-  }
-}
+  &-3 {
+    >.el-form-item {
+      width: 30%;
+      margin-right: 3%;
+    }
 
-.form-column-1 {
-  .el-form-item {
-    width: 90%;
-    margin-right: 10%;
+    >.item-column {
+      &-2 {
+        width: 63%;
+      }
+      &-3 {
+        width: 97%;
+      }
+    }
   }
 }
