@@ -78,3 +78,9 @@ export interface FORM_RENDER {
   style?: FORM_STYLE;
   properties: FORM_PROPERTIES;
 }
+
+export interface TreeData {
+  label: string;
+  disabled?: string;
+  children?: TreeData;
+}

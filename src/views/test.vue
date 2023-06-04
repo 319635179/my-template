@@ -1,5 +1,9 @@
 <template>
-  <el-input v-model="data.test"></el-input>
+  <SelectTree :treeData="treeData">
+    <template #component>
+      111
+    </template>
+  </SelectTree>
   <el-button @click="openDia">唤出弹窗</el-button>
 </template>
 
@@ -7,6 +11,7 @@
 import { computed, h, ref } from "vue";
 import modal from "@/common/modal.ts";
 import Test from "@/views/test.vue";
+import SelectTree from "@/render/treeRender/selectTree.vue";
 
 const props = withDefaults(
   defineProps<{
@@ -37,7 +42,7 @@ const init = () => {
 };
 const testData = ref({ test: 333 });
 const openDia = () => {
-  modal.dialog(
+  modal.popups(
     "title",
     h(Test, {
       modelValue: testData.value,
@@ -48,6 +53,12 @@ const openDia = () => {
   );
 };
 init();
+const treeData = [
+  {label: 'a', disabled: true},
+  {label: 'b'},
+  {label: 'c'},
+  {label: 'd'},
+]
 </script>
 
 <style scoped lang="less"></style>

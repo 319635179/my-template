@@ -4,6 +4,11 @@
     userStore.name
   }}</el-button>
   {{ testData.test }}
+  <SelectTree :treeData="treeData">
+    <template #component>
+      111
+    </template>
+  </SelectTree>
 </template>
 
 <script setup lang="ts">
@@ -15,6 +20,7 @@ import { h, onMounted, ref, shallowRef } from "vue";
 import Test from "@/views/test.vue";
 import modal from "@/common/modal.ts";
 import FormRender from "@/render/formRender/formRender.vue";
+import SelectTree from "@/render/treeRender/selectTree.vue";
 
 const userStore = useUserStore();
 const test: META_ITEM = {
@@ -130,7 +136,12 @@ Post("/login").then((resp) => {
     });
   }
 });
-
+const treeData = [
+  {label: 'a', disabled: true},
+  {label: 'b'},
+  {label: 'c'},
+  {label: 'd'},
+]
 onMounted(() => {});
 </script>
 

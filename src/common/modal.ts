@@ -28,13 +28,15 @@ const modal = {
     $dialog(title, com, options);
   },
   popups: (title: string, com: any, options?: AnyObject) => {
-    options = {};
-    options.width = '675px';
+    options = {
+      width: '675px'
+    };
     $dialog(title, com, options);
   },
   largeDia: (title: string, com: any, options?: AnyObject) => {
-    options = {};
-    options.width = '900px';
+    options = {
+      width: '900px'
+    };
     $dialog(title, com, options);
   },
   drawer: (title: string, com: any, options?: AnyObject) => {
