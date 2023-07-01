@@ -5,10 +5,9 @@
   }}</el-button>
   {{ testData.test }}
   <SelectTree v-model="treeData">
-    <template #component>
-      111
-    </template>
+    <template #component> 111 </template>
   </SelectTree>
+  <Close />
 </template>
 
 <script setup lang="ts">
@@ -16,11 +15,12 @@ import { Post } from "@/common/request.ts";
 import { useUserStore } from "@/store/user.ts";
 import { FORM_RENDER, META_ITEM } from "@/interface/field.ts";
 import { getFormItem } from "@/common/field.ts";
-import { h, onMounted, ref, shallowRef, watch } from "vue";
+import { h, ref } from "vue";
 import Test from "@/views/test.vue";
 import modal from "@/common/modal.ts";
 import FormRender from "@/render/formRender/formRender.vue";
 import SelectTree from "@/render/treeRender/selectTree.vue";
+import Close from "@/components/icon/close.vue";
 
 const userStore = useUserStore();
 const test: META_ITEM = {
@@ -137,19 +137,11 @@ Post("/login").then((resp) => {
   }
 });
 const treeData = ref([
-  {label: 'a', disabled: true},
-  {label: 'b'},
-  {label: 'c'},
-  {label: 'd'},
-])
-onMounted(() => {
-  watch(
-    () => treeData.value,
-    () => {
-      console.log('change', treeData.value);
-    }
-  )
-});
+  { label: "a", disabled: true },
+  { label: "b" },
+  { label: "c" },
+  { label: "d" },
+]);
 </script>
 
 <style scoped lang="less"></style>

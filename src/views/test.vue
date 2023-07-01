@@ -1,8 +1,6 @@
 <template>
   <SelectTree v-model="treeData">
-    <template #component>
-      111
-    </template>
+    <template #component> 111 </template>
   </SelectTree>
   <el-button @click="openDia">唤出弹窗</el-button>
 </template>
@@ -53,12 +51,12 @@ const openDia = () => {
   );
 };
 init();
-const treeData = [
-  {label: 'a', disabled: true},
-  {label: 'b'},
-  {label: 'c'},
-  {label: 'd'},
-]
+const treeData = ref([
+  { label: "a", disabled: true },
+  { label: "b" },
+  { label: "c" },
+  { label: "d" },
+]);
 </script>
 
 <style scoped lang="less"></style>

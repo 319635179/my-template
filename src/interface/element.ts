@@ -9,6 +9,7 @@ import {
   Value,
   Values,
 } from "async-validator/dist-types/interface";
+
 export declare type Arrayable<T> = T | T[];
 
 export interface RuleItem {

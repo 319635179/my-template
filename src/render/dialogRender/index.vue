@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import { BUTTON } from "@/interface/util.ts";
-import "./index.less"
+import "./index.less";
 
 const props = defineProps<{
   com: any;

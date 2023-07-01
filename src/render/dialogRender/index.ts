@@ -10,13 +10,14 @@ export const $dialog = (title: string, com: any, options?: AnyObject) => {
       option: () => {
         unmount();
       },
-    },{
+    },
+    {
       label: "确定",
       option: () => {
         options?.confirm();
         unmount();
       },
-      type: 'primary',
+      type: "primary",
     },
   ];
   const dialog = createApp(Dialog, {
@@ -26,7 +27,7 @@ export const $dialog = (title: string, com: any, options?: AnyObject) => {
     width: options?.width,
     onClose: () => {
       unmount();
-    }
+    },
   });
 
   const mount = () => {

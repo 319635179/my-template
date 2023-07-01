@@ -1,5 +1,5 @@
 <template>
-  <div>table</div>
+  <i class="iconfont icon-close"></i>
 </template>
 
 <script setup lang="ts"></script>
