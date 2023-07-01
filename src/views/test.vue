@@ -1,5 +1,5 @@
 <template>
-  <SelectTree :treeData="treeData">
+  <SelectTree v-model="treeData">
     <template #component>
       111
     </template>

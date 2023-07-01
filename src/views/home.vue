@@ -4,7 +4,7 @@
     userStore.name
   }}</el-button>
   {{ testData.test }}
-  <SelectTree :treeData="treeData">
+  <SelectTree v-model="treeData">
     <template #component>
       111
     </template>
@@ -16,7 +16,7 @@ import { Post } from "@/common/request.ts";
 import { useUserStore } from "@/store/user.ts";
 import { FORM_RENDER, META_ITEM } from "@/interface/field.ts";
 import { getFormItem } from "@/common/field.ts";
-import { h, onMounted, ref, shallowRef } from "vue";
+import { h, onMounted, ref, shallowRef, watch } from "vue";
 import Test from "@/views/test.vue";
 import modal from "@/common/modal.ts";
 import FormRender from "@/render/formRender/formRender.vue";
@@ -136,13 +136,20 @@ Post("/login").then((resp) => {
     });
   }
 });
-const treeData = [
+const treeData = ref([
   {label: 'a', disabled: true},
   {label: 'b'},
   {label: 'c'},
   {label: 'd'},
-]
-onMounted(() => {});
+])
+onMounted(() => {
+  watch(
+    () => treeData.value,
+    () => {
+      console.log('change', treeData.value);
+    }
+  )
+});
 </script>
 
 <style scoped lang="less"></style>

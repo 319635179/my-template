@@ -30,7 +30,6 @@ const props = defineProps<{
   onClose: any;
   footerBtn?: BUTTON[];
 }>();
-console.log(props.footerBtn);
 const emits = defineEmits(["update:modelValue", "change", "close"]);
 
 const handleClose = () => {

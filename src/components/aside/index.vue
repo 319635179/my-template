@@ -21,5 +21,6 @@ import { collapse, handleCollapse } from "@/components/aside/index.ts";
   border-top: 1px solid rgba(128, 128, 128, 0.2);
   position: absolute;
   bottom: 0;
+  cursor: pointer;
 }
 </style>

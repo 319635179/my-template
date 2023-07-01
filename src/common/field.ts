@@ -59,7 +59,6 @@ export const getRules = (config: any) => {
     default:
       break;
   }
-  console.log(rules);
   return rules;
 
 }
