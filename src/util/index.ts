@@ -20,3 +20,11 @@ export const getHidden = (data: { prop: string; val: any }[], eq: boolean) => {
   }
   return res;
 };
+
+export const max = (a: any, b: any) => {
+  return a > b ? a : b;
+};
+
+export const min = (a: any, b: any) => {
+  return a < b ? a : b;
+};

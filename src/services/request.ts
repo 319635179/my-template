@@ -8,14 +8,13 @@ const instance = axios.create({
   withCredentials: true,
 });
 
-const userStore = store.user;
-
 interface REQUEST_CONFIG extends InternalAxiosRequestConfig {
   options: Request_Opt;
 }
 
 // @ts-ignore
 const setRequestHeaders = (header: AxiosRequestHeaders, opt: Request_Opt) => {
+  const userStore = store.user;
   const headers: AxiosRequestHeaders = header;
   if (userStore.isLogin) {
     // 获取token

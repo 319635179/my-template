@@ -10,7 +10,7 @@
         </el-aside>
         <el-main>
           <el-container>
-            <el-header class="tem-bread">bread</el-header>
+            <el-header class="tem-bread"><Bread /></el-header>
             <el-main class="tem-main-body">
               <div class="router-view">
                 <div class="main-view">
@@ -28,6 +28,10 @@
 <script setup lang="ts">
 import Header from "@/components/header/index.vue";
 import Aside from "@/components/aside/index.vue";
+import Bread from "@/components/bread/index.vue";
+import { InitRouterEach } from "@/router/each.ts";
+
+InitRouterEach();
 </script>
 
 <style scoped></style>
