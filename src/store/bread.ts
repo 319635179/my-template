@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { Ref, ref } from "vue";
 import { min } from "@/util";
 import { routerPush } from "@/router/option.ts";
+import { getLocalStorage, LocalStorageName } from "@/common/storage.ts";
 
 export interface BREAD_ITEM {
   fullPath: string;
@@ -9,7 +10,8 @@ export interface BREAD_ITEM {
 }
 export const useBreadStore = defineStore("bread", () => {
   const breadList: Ref<{ [key: string]: BREAD_ITEM }> = ref({});
-  const focusBread = ref("主页");
+  const S_focusBread = getLocalStorage(LocalStorageName.focusBread, "主页");
+  const focusBread = ref(S_focusBread);
 
   breadList.value["主页"] = { name: "主页", fullPath: "/home" };
   breadList.value["表单"] = { name: "表单", fullPath: "/form" };
@@ -22,7 +24,6 @@ export const useBreadStore = defineStore("bread", () => {
 
   const addBread = (item: BREAD_ITEM) => {
     breadList.value[item.name] = item;
-    changeFocusBread(item);
     breadNames = Object.keys(breadList.value);
   };
 

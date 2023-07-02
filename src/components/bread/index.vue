@@ -2,11 +2,11 @@
   <div class="bread">
     <span
       class="item"
-      v-for="(item, index, i) in store.bread.breadList"
+      v-for="(item, name, i) in store.bread.breadList"
       :class="item.name === store.bread.focusBread ? 'is-focus' : ''"
       @click="routerGo(item)"
     >
-      {{ item.name }}
+      {{ name }}
       <span class="iconfont icon-close" @click.stop="removeItem(i)"></span>
     </span>
   </div>
@@ -35,10 +35,11 @@ const removeItem = (i: number) => {
   border-radius: 2px;
   box-shadow: 1px 1px 3px #8c8c8c;
   background: rgb(163, 236, 197);
+  transition: 200ms;
 }
 
 .is-focus {
   background: rgb(98, 226, 245);
-  color: #0f26bd;
+  color: #09202d;
 }
 </style>

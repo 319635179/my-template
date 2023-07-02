@@ -12,7 +12,7 @@ import { routerPush } from "@/router/option.ts";
 const login = () => {
   mountApp();
   unMountApp();
-  routerPush({ name: "home" });
+  routerPush({ name: "主页" });
 };
 </script>
 
