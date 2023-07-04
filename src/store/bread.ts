@@ -34,12 +34,12 @@ export const useBreadStore = defineStore("bread", () => {
       breadList.value[breadNames[i]]
     ) {
       const item = breadList.value[breadNames[i]];
-      if (item.name === focusBread.value) {
-        focusBread.value = breadNames[min(i + 1, breadNames.length - 1)];
-        routerPush({ path: breadList.value[focusBread.value].fullPath });
-      }
       delete breadList.value[item.name];
       breadNames = Object.keys(breadList.value);
+      if (item.name === focusBread.value) {
+        focusBread.value = breadNames[min(i, breadNames.length - 1)];
+        routerPush({ path: breadList.value[focusBread.value].fullPath });
+      }
     }
   };
 

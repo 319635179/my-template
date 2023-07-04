@@ -42,8 +42,24 @@ interface FORM_STYLE {
   [key: string]: any;
 }
 
+interface TABLE_STYLE {
+  height?: string | number;
+  maxHeight?: string | number;
+  [key: string]: any;
+}
+
+interface TABLE_COLUMNS_STYLE {
+  width?: string | number;
+  maxWidth?: string | number;
+  minWidth?: string | number;
+  color?: string;
+}
+
 export interface FORM_PROPERTIES {
   [key: string]: FORM_ITEM;
+}
+export interface TABLE_PROPERTIES {
+  [key: string]: TABLE_ITEM;
 }
 export interface NUM_LIMIT {
   min?: number;
@@ -67,9 +83,25 @@ export interface FORM_ATTRIBUTE {
   rules?: FormItemRule[];
   child?: FORM_RENDER;
 }
+
+export interface TABLE_ATTRIBUTE {
+  widget?: "component" | "text";
+  style?: TABLE_COLUMNS_STYLE;
+  className?: string;
+  labelClassName?: string;
+  component?: any; // widget为component时，传入组件
+  defaultValue?: any;
+  format?: FORMAT_TYPE;
+  formatter?: (row: any, column: any, cellValue: any, index: any) => string;
+  align?: "left" | "center" | "right"; // 对齐方式
+}
 export interface FORM_ITEM extends META_ITEM, FORM_ATTRIBUTE {}
 
+export interface TABLE_ITEM extends META_ITEM, TABLE_ATTRIBUTE {}
+
 export interface FORM_EXTRA extends NO_MUST_META_ITEM, FORM_ATTRIBUTE {}
+
+export interface TABLE_EXTRA extends NO_MUST_META_ITEM, TABLE_ATTRIBUTE {}
 
 export interface FORM_RENDER {
   column?: number;
@@ -77,6 +109,15 @@ export interface FORM_RENDER {
   className?: string;
   style?: FORM_STYLE;
   properties: FORM_PROPERTIES;
+}
+
+export interface TABLE_RENDER {
+  height?: string | number;
+  style?: TABLE_STYLE;
+  className?: string;
+  select?: boolean;
+  custom?: boolean | number;
+  properties: TABLE_PROPERTIES;
 }
 
 export interface TreeData {
