@@ -1,6 +1,10 @@
 <template>
-  <el-table :data="tableData">
-    <items :columns="tableAttribute.properties" />
+  <el-table :data="tableData" @selection-change="handleSelectionChange">
+    <items :selection="tableAttribute.select" :columns="tableAttribute.properties" :option="tableAttribute.option" >
+      <template #opt>
+          <slot name="opt" />
+      </template>
+    </items>
   </el-table>
 </template>
 
@@ -15,6 +19,10 @@ const props = defineProps<{
 }>();
 
 const tableData = computed(() => props.data);
+
+const handleSelectionChange = (val) => {
+  console.log(val);
+}
 </script>
 
 <style scoped lang="less"></style>

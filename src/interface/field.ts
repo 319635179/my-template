@@ -17,6 +17,12 @@ export type WIDGET_TYPE =
   | "time"
   | "component";
 
+export interface TABLE_OPTIONS {
+  open?: boolean;
+  width?: string | number;
+  minWidth?: string | number;
+}
+
 export interface META_ITEM {
   label: string;
   prop: string;
@@ -86,14 +92,20 @@ export interface FORM_ATTRIBUTE {
 
 export interface TABLE_ATTRIBUTE {
   widget?: "component" | "text";
+  width?: number | string;
   style?: TABLE_COLUMNS_STYLE;
   className?: string;
   labelClassName?: string;
-  component?: any; // widget为component时，传入组件
   defaultValue?: any;
   format?: FORMAT_TYPE;
   formatter?: (row: any, column: any, cellValue: any, index: any) => string;
   align?: "left" | "center" | "right"; // 对齐方式
+}
+
+export interface TABLE_DATA {
+  [key: string]: number | string | {
+    component: any;
+  }
 }
 export interface FORM_ITEM extends META_ITEM, FORM_ATTRIBUTE {}
 
@@ -116,6 +128,7 @@ export interface TABLE_RENDER {
   style?: TABLE_STYLE;
   className?: string;
   select?: boolean;
+  option?: TABLE_OPTIONS;
   custom?: boolean | number;
   properties: TABLE_PROPERTIES;
 }
