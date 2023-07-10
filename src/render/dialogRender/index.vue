@@ -7,7 +7,7 @@
     :before-close="handleClose"
   >
     <Component :is="com"></Component>
-    <el-button @click="handleClose">关闭</el-button>
+    <!--    <el-button @click="handleClose">关闭</el-button>-->
     <template #footer>
       <el-button
         v-for="item in footerBtn"

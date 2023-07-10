@@ -4,7 +4,6 @@
       <tree-render v-model="data" :draggable="true"></tree-render
     ></el-aside>
     <el-main>
-      {{ data }}
       <slot name="component" />
     </el-main>
   </el-container>

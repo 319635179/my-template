@@ -103,9 +103,12 @@ export interface TABLE_ATTRIBUTE {
 }
 
 export interface TABLE_DATA {
-  [key: string]: number | string | {
-    component: any;
-  }
+  [key: string]:
+    | number
+    | string
+    | {
+        component: any;
+      };
 }
 export interface FORM_ITEM extends META_ITEM, FORM_ATTRIBUTE {}
 

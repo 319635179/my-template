@@ -28,3 +28,12 @@ export const max = (a: any, b: any) => {
 export const min = (a: any, b: any) => {
   return a < b ? a : b;
 };
+
+export const getObjMapByNumLimit = (obj: AnyObject, num?: number) => {
+  const objStr = Object.keys(obj);
+  const res: AnyObject = {};
+  for (let i = 0; i < min(num || objStr.length, objStr.length); i++) {
+    res[objStr[i]] = obj[objStr[i]];
+  }
+  return res;
+};

@@ -5,15 +5,20 @@
     :class-name="column.className"
     :prop="column.prop"
     :label="column.label"
-    :width="column.width || column.style?.width || 200"
+    :width="column.width || column.style?.width"
     :min-width="column.style?.minWidth || 120"
   >
     <template #default="scope" v-if="column.widget === 'component'">
       <component :is="scope.row[column.prop]" />
-<!--      {{ scope.row[column.prop] }}-->
     </template>
   </el-table-column>
-  <el-table-column v-if="option?.open !== false" fixed="right" label="操作" :min-width="option?.minWidth || 120" :width="option?.width || 120">
+  <el-table-column
+    v-if="option?.open !== false"
+    fixed="right"
+    label="操作"
+    :min-width="option?.minWidth || 120"
+    :width="option?.width || 120"
+  >
     <slot name="opt"></slot>
   </el-table-column>
 </template>

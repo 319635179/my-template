@@ -1,4 +1,10 @@
-import { FORM_EXTRA, FORM_ITEM, META_ITEM, TABLE_EXTRA, TABLE_ITEM } from "@/interface/field.ts";
+import {
+  FORM_EXTRA,
+  FORM_ITEM,
+  META_ITEM,
+  TABLE_EXTRA,
+  TABLE_ITEM,
+} from "@/interface/field.ts";
 import {
   REG_ACCOUNT,
   REG_DBNAME,
@@ -24,12 +30,12 @@ export const getFormItem = (meta: META_ITEM, extra?: FORM_EXTRA) => {
 };
 
 export const getTableColumn = (meta: META_ITEM, extra?: TABLE_EXTRA) => {
-  const res: TABLE_ITEM = {...meta, ...extra};
+  const res: TABLE_ITEM = { ...meta, ...extra };
 
   return {
     [res.prop]: res,
   };
-}
+};
 
 export const getAction = (widget: any) => {
   let action = "输入";
