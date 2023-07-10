@@ -24,12 +24,16 @@ const test_table: TABLE_RENDER = {
     width: 200,
   },
   custom: true,
+  // columnWidth: 200,
   properties: {
-    ...getTableColumn({ label: "test1", prop: "test1" }),
+    ...getTableColumn({ label: "test1", prop: "test1" }, {
+      customDisabled: true,
+    }),
     ...getTableColumn(
       { label: "test2", prop: "test2" },
       {
         widget: "component",
+        customDisabled: true,
       }
     ),
     ...getTableColumn({ label: "test3", prop: "test3" }),

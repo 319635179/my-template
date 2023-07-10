@@ -1,5 +1,5 @@
 <template>
-  <el-row>
+  <el-row class="table-header">
     <el-col class="table-header-left" :span="12"
       ><slot name="header-left"
     /></el-col>
@@ -18,6 +18,7 @@
       :selection="tableAttribute.select"
       :columns="displayTableAtt"
       :option="tableAttribute.option"
+      :columnWidth="tableAttribute.columnWidth"
     >
       <template #opt>
         <slot name="opt" />
@@ -65,7 +66,12 @@ onMounted(() => {
 </script>
 
 <style scoped lang="less">
-.table-header-right {
-  text-align: right;
+.table-header {
+  margin-bottom: 8px;
+  line-height: 32px;
+
+  .table-header-right {
+    text-align: right;
+  }
 }
 </style>

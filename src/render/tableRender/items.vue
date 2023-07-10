@@ -5,7 +5,7 @@
     :class-name="column.className"
     :prop="column.prop"
     :label="column.label"
-    :width="column.width || column.style?.width"
+    :width="column.width || column.style?.width || columnWidth"
     :min-width="column.style?.minWidth || 120"
   >
     <template #default="scope" v-if="column.widget === 'component'">
@@ -30,6 +30,7 @@ const props = defineProps<{
   columns: TABLE_PROPERTIES;
   selection?: boolean;
   option?: TABLE_OPTIONS;
+  columnWidth?: string | number;
 }>();
 </script>
 

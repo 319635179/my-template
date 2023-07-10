@@ -3,7 +3,7 @@
     <el-aside class="aside">
       <tree-render v-model="data" :draggable="true"></tree-render
     ></el-aside>
-    <el-main>
+    <el-main class="main">
       <slot name="component" />
     </el-main>
   </el-container>
@@ -39,6 +39,10 @@ const data = computed({
   .aside {
     width: 30%;
     border-right: 1px solid rgba(169, 169, 169, 0.4);
+  }
+
+  .main {
+    padding: 8px 12px;
   }
 }
 </style>

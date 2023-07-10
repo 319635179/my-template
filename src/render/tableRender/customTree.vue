@@ -35,7 +35,7 @@ const changeTreeData = (obj, isInitCheck?: boolean) => {
     if (isInitCheck) {
       checkValue.value[item] = true;
     }
-    return { label: obj[item].label };
+    return { label: obj[item].label, disabled: obj[item].customDisabled };
   });
 };
 
@@ -52,6 +52,20 @@ onMounted(() => {
         }
       });
       changeTreeData(data);
+      emits("updateTableAtt", data);
+    },
+    {
+      deep: true,
+    }
+  );
+
+  watch(
+    () => treeData,
+    () => {
+      const data = {}
+      treeData.value.forEach(item => {
+        data[item.label] = props.allAtt[item.label];
+      })
       emits("updateTableAtt", data);
     },
     {

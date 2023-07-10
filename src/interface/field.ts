@@ -100,6 +100,7 @@ export interface TABLE_ATTRIBUTE {
   format?: FORMAT_TYPE;
   formatter?: (row: any, column: any, cellValue: any, index: any) => string;
   align?: "left" | "center" | "right"; // 对齐方式
+  customDisabled?: boolean;
 }
 
 export interface TABLE_DATA {
@@ -133,6 +134,7 @@ export interface TABLE_RENDER {
   select?: boolean;
   option?: TABLE_OPTIONS;
   custom?: boolean | number;
+  columnWidth?: number | string;
   properties: TABLE_PROPERTIES;
 }
 
