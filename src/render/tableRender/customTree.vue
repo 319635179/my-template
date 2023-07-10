@@ -28,7 +28,6 @@ const treeData = ref([]);
 
 const changeTreeData = (obj, isInitCheck?: boolean) => {
   const objStr = Object.keys(obj);
-  console.log(objStr, obj);
   if (isInitCheck) {
     checkValue.value = {};
   }
