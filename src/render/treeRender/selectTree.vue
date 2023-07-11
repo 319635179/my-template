@@ -42,7 +42,7 @@ const data = computed({
   }
 
   .main {
-    padding: 8px 12px;
+    padding: var(--padding-mid) var(--padding-mid-1);
   }
 }
 </style>

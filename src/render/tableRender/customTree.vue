@@ -4,6 +4,7 @@
       <el-checkbox
         v-for="item in allAtt"
         :label="item.label"
+        :disabled="item.customDisabled"
         v-model="checkValue[item.label]"
       ></el-checkbox>
     </template>
@@ -62,10 +63,10 @@ onMounted(() => {
   watch(
     () => treeData,
     () => {
-      const data = {}
-      treeData.value.forEach(item => {
+      const data = {};
+      treeData.value.forEach((item) => {
         data[item.label] = props.allAtt[item.label];
-      })
+      });
       emits("updateTableAtt", data);
     },
     {

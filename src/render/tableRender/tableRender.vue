@@ -67,7 +67,7 @@ onMounted(() => {
 
 <style scoped lang="less">
 .table-header {
-  margin-bottom: 8px;
+  margin-bottom: var(--margin-small-1);
   line-height: 32px;
 
   .table-header-right {

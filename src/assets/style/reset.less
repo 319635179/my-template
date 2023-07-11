@@ -2,19 +2,19 @@
   .tem-header {
     height: 50px;
     line-height: 50px;
-    padding: 0 20px;
+    padding: 0 var(--padding-large-1);
     display: flex;
-    color: white;
-    background: #a20415;
+    color: var(--white-light);
+    background: var(--bg-header-color);
 
     .header-name {
       .logo {
         display: inline-block;
-        margin-right: 10px;
+        margin-right: var(--margin-mid);
         width: 30px;
         height: 30px;
         border-radius: 50%;
-        background: #278b00;
+        background: var(--green-dark);
         vertical-align: middle;
       }
     }
@@ -26,7 +26,7 @@
   }
 
   .tem-bread {
-    padding: 0 3px;
+    padding: 0 var(--padding-small);
     --el-header-height: 30px;
   }
 
@@ -36,8 +36,8 @@
     .router-view {
       background: var(--bg-color);
       height: calc(100vh - 100px);
-      margin: 10px;
-      padding: 10px;
+      margin: var(--margin-mid);
+      padding: var(--padding-mid-1);
       overflow: auto;
       border-radius: 6px;
 

@@ -4,6 +4,7 @@ import { ElMessage } from "element-plus";
 import { AnyObject } from "@/interface/util.ts";
 import { $dialog } from "@/render/dialogRender/index.ts";
 import { $drawer } from "@/render/drawerRender/index.ts";
+import "./modal.less";
 
 const modal = {
   warning: (mes: string) => {
@@ -31,16 +32,16 @@ const modal = {
     options = {
       ...options,
       width: "675px",
-      confirm: options?.confirm() || function(){},
-    }
+      confirm: options?.confirm() || function () {},
+    };
     $dialog(title, com, options);
   },
   largeDia: (title: string, com: any, options?: AnyObject) => {
     options = {
       ...options,
       width: "900px",
-      confirm: options?.confirm() || function(){},
-    }
+      confirm: options?.confirm() || function () {},
+    };
     $dialog(title, com, options);
   },
   drawer: (title: string, com: any, options?: AnyObject) => {

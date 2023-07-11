@@ -29,17 +29,17 @@ const removeItem = (i: number) => {
 
 <style scoped lang="less">
 .item {
-  margin-right: 8px;
+  margin-right: var(--margin-small-1);
   line-height: 30px;
-  padding: 2px 8px;
+  padding: var(--padding-small) var(--padding-mid);
   border-radius: 2px;
-  box-shadow: 1px 1px 3px #8c8c8c;
-  background: rgb(163, 236, 197);
+  box-shadow: 1px 1px 3px var(--gray-mid-1);
+  background: var(--cyan-light-1);
   transition: 200ms;
 }
 
 .is-focus {
-  background: rgb(98, 226, 245);
-  color: #09202d;
+  background: var(--cyan-light-blue-1);
+  color: var(--blue-dark-1);
 }
 </style>

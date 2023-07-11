@@ -26,9 +26,12 @@ const test_table: TABLE_RENDER = {
   custom: true,
   // columnWidth: 200,
   properties: {
-    ...getTableColumn({ label: "test1", prop: "test1" }, {
-      customDisabled: true,
-    }),
+    ...getTableColumn(
+      { label: "test1", prop: "test1" },
+      {
+        customDisabled: true,
+      }
+    ),
     ...getTableColumn(
       { label: "test2", prop: "test2" },
       {
