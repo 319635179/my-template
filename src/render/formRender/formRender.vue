@@ -43,12 +43,13 @@
 </template>
 
 <script setup lang="ts">
-import { FORM_PROPERTIES, FORM_RENDER } from "@/interface/field.ts";
-import { computed, defineComponent, onMounted, Ref, ref } from "vue";
+import { FORM_PROPERTIES, FORM_RENDER, META_VALUE } from "@/interface/field.ts";
+import { computed, defineComponent, onMounted, Ref, ref, watch } from "vue";
 import { AnyObject } from "@/interface/util.ts";
 import Widget from "@/render/formRender/widget.vue";
 import "./index.less";
 import { getRules } from "@/common/field.ts";
+import { Get, Post } from "@/common/request.ts";
 
 defineComponent({
   name: "FormRender",
@@ -98,7 +99,64 @@ const getHidden = (item: any) => {
   return getHiddenFunc(item)(item, form.value);
 };
 
-onMounted(() => {});
+const getOptionsByApi = async (api) => {
+  let ans: META_VALUE[] = [];
+  if (api.type === "post") {
+    await Post(api.api, { [api.params]: form.value[api.params] }).then((res) => {
+      ans = res.data;
+    });
+  } else {
+    await Get(api.api, { [api.params]: form.value[api.params] }).then((res) => {
+      ans = res.data;
+    })
+  }
+  return ans;
+};
+
+const getOptionsWatchByApi = (obj, key) => {
+  watch(
+    () => form.value[obj.optionsApi?.params],
+    () => {
+      getOptionsByApi(obj.optionsApi).then((res) => {
+        formItems.value[key].options = res;
+      });
+    }, {
+      deep: true
+    }
+  )
+}
+
+const getOptionsWatchBySelect = (obj, key) => {
+  watch(
+    () => form.value[obj.optionsSelect?.params],
+    () => {
+      formItems.value[key].options = obj.optionsSelect.getFunc(form.value[obj.optionsSelect.params]);
+    }, {
+      deep: true
+    }
+  )
+}
+
+const getOptions = () => {
+  for (let key in formItems.value) {
+    const obj = formItems.value[key];
+    if (obj.widget === "select" || obj.widget === "radio") {
+      if (obj.optionsApi) {
+        getOptionsWatchByApi(obj, key);
+        getOptionsByApi(obj.optionsApi).then((res) => {
+          formItems.value[key].options = res;
+        });
+      } else if(obj.optionsSelect) {
+        getOptionsWatchBySelect(obj, key);
+        formItems.value[key].options = obj.optionsSelect.getFunc(form.value[obj.optionsSelect.params]);
+      }
+    }
+  }
+};
+getOptions();
+
+onMounted(() => {
+});
 </script>
 
 <style scoped lang="less"></style>

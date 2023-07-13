@@ -74,6 +74,15 @@ export interface NUM_LIMIT {
 export interface FORM_ATTRIBUTE {
   widget?: WIDGET_TYPE; // 控件类型，默认text
   options?: META_VALUE[];
+  optionsApi?: {
+    api: string;
+    params: string;
+    type: 'post' | 'get';
+  };
+  optionsSelect?: {
+    getFunc: (params: any) => META_VALUE[],
+    params: string;
+  };
   style?: FORM_STYLE;
   className?: string;
   column?: number; // 占用列数

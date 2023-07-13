@@ -56,12 +56,11 @@ instance.interceptors.response.use(
 );
 
 export const request = async (data: any, options?: Request_Opt) => {
-  const promise: Promise<any> = new Promise((resolve) => {
+  return new Promise((resolve) => {
     instance({ ...data, options: options }).then((res) => {
       resolve(res);
     });
   });
-  return promise;
 };
 
 export default instance;

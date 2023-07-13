@@ -79,12 +79,29 @@ const test_form: FORM_RENDER = {
       { label: "eee", prop: "eee" },
       {
         widget: "select",
-        options: [
-          { label: "a", key: 1 },
-          { label: "b", key: 2 },
-        ],
+        // options: [
+        //   { label: "a", key: 1 },
+        //   { label: "b", key: 2 },
+        // ],
+        // optionsApi: {
+        //   api: "/aaa",
+        //   type: "post",
+        //   params: "ddd",
+        // },
+        optionsSelect: {
+          getFunc: (data) => {
+            if(data === 26) return [
+              { label: "a", key: 1 },
+              { label: "b", key: 2 },
+            ]; else  return [
+              { label: "c", key: 1 },
+              { label: "d", key: 2 },
+            ]
+          },
+          params: 'ddd'
+        },
         defaultValue: 2,
-        hidden: "form.ddd === 26",
+        // hidden: "form.ddd === 26",
       }
     ),
     ...getFormItem(
@@ -96,6 +113,7 @@ const test_form: FORM_RENDER = {
         attribute: {
           ttt: { label: "ttt", key: "t1", value: "t2" },
         },
+        hidden: "form.ddd === 26",
       }
     ),
     ...getFormItem(
